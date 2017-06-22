@@ -18,37 +18,72 @@ all_data = json.loads(decode)
 
 content1 = all_data['alerts']
 
-final_list1 = [['Country', 'Magvar', 'Sub type', 'City', 'Street', 'Report Rating', 'Confidence', 'Reliability', 'Latitude', 'Longitude', 'Type', 'User ID', 'Publication Timestamp']]
+
+with open("waze_alerts.csv", "r", encoding="utf8") as f:
+    reader = csv.reader(f)
+
+    check_reader = reader
+
+    len_reader = len(list(check_reader))
+
+with open("waze_alerts.csv", "r", encoding="utf8") as f:
+
+	if len_reader>1:
+
+		reader = csv.reader(f)
+		
+		## If header exists then skip it
+		next(reader, None)
+
+		output = []
+
+		## If tasks (rows) are present after the header then keep a track of task_ids
+		for row in reader:
+			output.append(str(row[11]))
+		
+		final_list1=[]
+
+	else:
+		output = []
+		if len_reader==1:
+			final_list1=[]
+		else:
+			final_list1 = [['Country', 'Magvar', 'Sub type', 'City', 'Street', 'Report Rating', 'Confidence', 'Reliability', 'Latitude', 'Longitude', 'Type', 'User ID', 'Publication Timestamp']]
+
 
 #print(content1)
 
 for ele in content1:
 
-	country = ele.get('country')
-	magvar =  ele.get('magvar')
-	sub_type =  ele.get('subtype')
-	city =  ele.get('city')
-	street =  ele.get('street')
-	report_rating = ele.get('reportRating')
-	confidence =  ele.get('confidence')
-	reliability =  ele.get('reliability')
-	latitude =  ele.get('location',{}).get('x')
-	longitude =  ele.get('location',{}).get('y')
-	Type =  ele.get('type')
 	user_id = ele.get('uuid')
-	road_type = ele.get('roadType')
-	publication_timestamp = ele.get('pubMillis')
-	
-	final_list1.append([country, magvar, sub_type, city, street, report_rating, confidence, reliability, latitude, longitude, Type, user_id, road_type, publication_timestamp])
-	print(final_list1)
 
-	## Skip lines which are already present
-	with open("waze_alerts.csv", "a", encoding='utf-8', newline='') as f:
-		writer = csv.writer(f)
-		for element in final_list1:
-			writer.writerow(element)
+	if user_id not in output:
+		
+		country = ele.get('country')
+		magvar =  ele.get('magvar')
+		sub_type =  ele.get('subtype')
+		city =  ele.get('city')
+		street =  ele.get('street')
+		report_rating = ele.get('reportRating')
+		confidence =  ele.get('confidence')
+		reliability =  ele.get('reliability')
+		latitude =  ele.get('location',{}).get('x')
+		longitude =  ele.get('location',{}).get('y')
+		Type =  ele.get('type')
+		user_id = ele.get('uuid')
+		road_type = ele.get('roadType')
+		publication_timestamp = ele.get('pubMillis')
+		
+		final_list1.append([country, magvar, sub_type, city, street, report_rating, confidence, reliability, latitude, longitude, Type, user_id, road_type, publication_timestamp])
+		print(final_list1)
 
-	final_list1=[]
+		## Skip lines which are already present
+		with open("waze_alerts.csv", "a", encoding='utf-8', newline='') as f:
+			writer = csv.writer(f)
+			for element in final_list1:
+				writer.writerow(element)
+
+		final_list1=[]
 
 final_list2 = [['Country', 'City', 'Level', 'Line', 'Length', 'Turn type', 'Type', 'User ID', 'End Node', 'Speed', 'Road type', 'Delay', 'Street', 'ID', 'Publication Timestamp']]
 
