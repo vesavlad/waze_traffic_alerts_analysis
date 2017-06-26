@@ -55,7 +55,7 @@ if os.path.isfile("waze_alerts.csv"):
 				final_list1 = [['Country', 'Magvar', 'Sub type', 'City', 'Street', 'Report Rating', 'Confidence', 'Reliability', 'Latitude', 'Longitude', 'Type', 'Unique Alert ID', 'Publication Timestamp']]
 else:
 	output = []
-	final_list1 = [['Country', 'Magvar', 'Sub type', 'City', 'Street', 'Report Rating', 'Confidence', 'Reliability', 'Latitude', 'Longitude', 'Type', 'Unique Alert ID', 'Publication Timestamp']]
+	final_list1 = [['Country', 'Magvar', 'Sub type', 'City', 'Street', 'Report Rating', 'Confidence', 'Reliability', 'Latitude', 'Longitude', 'Type', 'Unique Alert ID', 'Road Type', 'Publication Timestamp']]
 
 
 for ele in content1:
@@ -79,7 +79,7 @@ for ele in content1:
 		road_type = ele.get('roadType')
 		publication_timestamp = ele.get('pubMillis')
 		
-		final_list1.append([country, magvar, sub_type, city, street, report_rating, confidence, reliability, latitude, longitude, Type, unique_alert_id, road_type, publication_timestamp])
+		final_list1.append([country, magvar, sub_type, city, street, report_rating, confidence, reliability, longitude, latitude, Type, unique_alert_id, road_type, publication_timestamp])
 		print(final_list1)
 
 		## Skip lines which are already present
@@ -155,7 +155,6 @@ for ele in content2:
 			alert_unique_jam_id = ele.get('uuid')
 			alert_end_Node = ele.get('endNode')
 			alert_speed =  ele.get('speed')
-			alert_Type =  ele.get('type')
 			alert_blocking_Alert_ID = ele.get('blockingAlertUuid')
 			alert_road_type = ele.get('roadType')
 			alert_delay = ele.get('delay')
@@ -163,7 +162,7 @@ for ele in content2:
 			alert_id = ele.get('id')
 			alert_publication_timestamp = ele.get('pubMillis')
 		
-			final_list2.append([alert_country, alert_city, alert_level, alert_latitude, alert_longitude, alert_length, alert_turn_Type, alert_Type, alert_unique_jam_id, alert_end_Node, alert_speed, alert_Type, alert_blocking_Alert_ID, alert_road_type, alert_delay, alert_street, alert_id, alert_publication_timestamp])
+			final_list2.append([alert_country, alert_city, alert_level, alert_longitude, alert_latitude, alert_length, alert_turn_Type, alert_Type, alert_unique_jam_id, alert_end_Node, alert_speed, alert_blocking_Alert_ID, alert_road_type, alert_delay, alert_street, alert_id, alert_publication_timestamp])
 			print(final_list2)
 
 			## Skip lines which are already present
