@@ -5,6 +5,7 @@ import time
 import os	
 
 #Total time in minutes
+total_time = 30
 cnt_sleep = 0
 
 while True:
