@@ -13,11 +13,11 @@
 #### To run the R code:-
 
 #### For Alerts:-
-* Run "analysis_alerts.R" to visulazie all alerts in a Map.
+* Run "analysis_alerts.R" to visualize all alerts in a Map.
 * Run "analysis_alerts_new.R" to cluster the Geospatial data and improve accuracy of the location of alerts in a Map.
 * Run "high_alerts_new.R" to visualize only High Alert Regions with minumum 5 points, cluster the Geospatial data and improve accuracy of the location of alerts in a Map.
-* Run "alerts_type_new.R" to partition the data based on type and visulaize the Geospatial data based on frequency of alert's type.
+* Run "alerts_type_new.R" to partition the data based on type and visualize the Geospatial data based on frequency of alert's type.
 
 #### For Traffic Jams:-
-* Run "analysis_jams_new.R" to visulazie Traffic Jams routes on 3 different Map types.
-* Run "heavy_jams_new.R" to visulazie Heavy Traffic Jams routes with greater than 50 points on 3 different Map types.
+* Run "analysis_jams_new.R" to visualize Traffic Jams routes on 3 different Map types.
+* Run "heavy_jams_new.R" to visualize Heavy Traffic Jams routes with greater than 50 points on 3 different Map types.
