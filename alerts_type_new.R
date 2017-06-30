@@ -45,6 +45,11 @@ new_alerts_freq$Type <- factor(new_alerts_freq$Type, levels = other_freq$Type)
 #Relative Size
 show(ProvidenceMap + geom_point(aes(x = Longitude, y = Latitude, size = Type,colour = Type), 
                                 data = new_alerts_freq ))
+
+#Relative Size with no fill (hollow)
+show(ProvidenceMap + geom_point(shape=1, aes(x = Longitude, y = Latitude, size = Type,colour = Type), 
+                                stroke=2,
+                                data = new_alerts_freq ))
 # 
 # #Alternative
 # alerts$Type <- factor(alerts$Type, levels = other_freq$Type)
